@@ -3,10 +3,12 @@ version: '2'
 services:
     # basenode:
     #     build: ./base
+    #    image: settlemint/base-multichain    
     #     stdin_open: true
     #     tty: true
     masternode:
         build: ./master
+        image: settlemint/master-multichain
         stdin_open: true
         tty: true
         expose:
@@ -24,6 +26,7 @@ services:
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
     slavenode:
         build: ./node
+        image: settlemint/node-multichain
         stdin_open: true
         tty: true
         expose:
@@ -43,6 +46,7 @@ services:
             - masternode
     explorernode:
         build: ./explorer
+        image: settlemint/explorer-multichain
         stdin_open: true
         tty: true
         expose:
@@ -57,6 +61,8 @@ services:
             RPC_PASSWORD: this-is-insecure-change-it
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
             MASTER_NODE: masternode
+            VIRTUAL_HOST: explorer.multichain.docker
+            VIRTUAL_PORT: 2750
         links:
             - masternode
         depends_on:
