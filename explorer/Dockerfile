@@ -1,4 +1,4 @@
-FROM kunstmaan/node-multichain
+FROM settlemint/node-multichain
 MAINTAINER Roderik van der Veer
 
 RUN apt-get update \

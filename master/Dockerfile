@@ -1,4 +1,4 @@
-FROM kunstmaan/base-multichain
+FROM settlemint/base-multichain
 MAINTAINER Roderik van der Veer
 
 COPY ./runchain.sh /root/runchain.sh
